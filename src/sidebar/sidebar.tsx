@@ -49,13 +49,13 @@ export function Sidebar () {
 
       <S.Divider>
         <S.LeftLine />
-        <S.DividerText>Arquivos</S.DividerText>
+        <S.DividerText>Files</S.DividerText>
         <S.RightLine />
       </S.Divider>
 
       <S.Button>
         <PlusIcon aria-hidden='true' focusable='false' />
-        <span>Adicionar arquivo</span>
+        <span>Add file</span>
       </S.Button>
 
       <S.List>
