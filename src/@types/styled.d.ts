@@ -1,13 +1,7 @@
-declare module 'styled-components' {
-  export interface DefaultTheme {
-    colors: {
-      black: string,
-      lightBlack: string,
-      white: string,
-      gray: string,
-      primary: string
-    }
-  }
-}
+import { theme } from 'resources/theme'
 
-export { }
+type Theme = typeof theme
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends Theme { }
+}
