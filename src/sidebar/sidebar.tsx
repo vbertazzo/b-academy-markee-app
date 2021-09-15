@@ -1,38 +1,18 @@
-import { RefObject, useState } from 'react'
-import { v4 as uuid } from 'uuid'
+import { File } from 'resources/files/types'
 
 import { StatusIcon } from './status-icon'
 import { ReactComponent as PlusIcon } from 'ui/assets/plus.svg'
 import { ReactComponent as RemoveIcon } from 'ui/assets/close.svg'
 import logo from './logo.png'
-import { File } from 'resources/files/types'
 
 import * as S from './sidebar-styles'
 
 type SidebarProps = {
-  inputRef: RefObject<HTMLInputElement>
+  files: File[]
+  onCreateFile: () => void
 }
 
-export function Sidebar ({ inputRef }: SidebarProps) {
-  const [files, setFiles] = useState<File[]>([])
-
-  const handleCreateFile = () => {
-    inputRef.current?.focus()
-
-    setFiles(prevState => prevState
-      .map(file => ({
-        ...file,
-        active: false,
-      }))
-      .concat({
-        id: uuid(),
-        name: 'Sem título',
-        content: '',
-        active: true,
-        status: 'saved',
-      }))
-  }
-
+export function Sidebar ({ files, onCreateFile }: SidebarProps) {
   return (
     <S.Sidebar>
       <header>
@@ -47,7 +27,7 @@ export function Sidebar ({ inputRef }: SidebarProps) {
         <S.RightLine />
       </S.Divider>
 
-      <S.Button onClick={handleCreateFile}>
+      <S.Button onClick={onCreateFile}>
         <PlusIcon aria-hidden='true' focusable='false' />
         <span>Add file</span>
       </S.Button>
