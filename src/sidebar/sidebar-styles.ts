@@ -13,6 +13,24 @@ export const Sidebar = styled.aside`
   flex-direction: column;
 `
 
+export const LogoLink = styled.a`${({ theme }) => css`
+  &:focus {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1.2rem;
+    opacity: 1;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1.2rem;
+    opacity: 1;
+  }
+`}`
+
 export const Logo = styled.img`
   height: 4.4rem;
   margin-top: 1.4rem;
@@ -70,6 +88,22 @@ export const Button = styled.button`${({ theme }) => css`
   &:hover {
     background: ${theme.colors.primaryDark};
   }
+
+  &:focus {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1rem;
+    opacity: 1;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1rem;
+    opacity: 1;
+  }
 `}`
 
 export const List = styled.ul`
@@ -90,6 +124,7 @@ type FileIconProps = {
 export const FileIcon = styled(File) <FileIconProps>`${({ theme, $isActive }) => css`
   color: ${$isActive ? theme.colors.primary : theme.colors.gray};
   opacity: ${$isActive ? 1 : 0.65};
+  position: absolute;
   transition: opacity 0.2s linear;
 `}`
 
@@ -99,17 +134,34 @@ type FileLinkProps = {
 
 export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
   color: ${theme.colors.gray};
-  flex-grow: 1;
   font-size: 1.6rem;
+  height: 100%;
   letter-spacing: -0.02rem;
-  line-height: 1.2rem;
-  max-width: 17.6rem;
   opacity: ${isActive ? 1 : 0.65};
-  overflow: hidden;
+  padding-left: 3.2rem;
   text-decoration: none;
-  text-overflow: ellipsis;
   transition: opacity 0.2s linear;
-  white-space: nowrap;
+  width: 100%;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  &:focus {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1.2rem;
+    opacity: 1;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1.2rem;
+    opacity: 1;
+  }
 `} `
 
 type ListItemProps = {
@@ -118,9 +170,9 @@ type ListItemProps = {
 
 export const ListItem = styled.li<ListItemProps>`${({ theme, isActive }) => css`
   background: ${isActive ? theme.colors.lightBlack : theme.colors.black};
-  cursor: pointer;
   border-radius: 0.6rem;
   padding: 0.8rem 1rem;
+  position: relative;
   transition: background 0.2s linear;
 
   display: flex;
@@ -151,14 +203,18 @@ export const StatusContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: absolute;
+  right: 1rem;
 `
 
 export const RemoveButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  display: none;
+  z-index: 3;
 
+  display: none;
   justify-content: center;
   align-items: center;
 
