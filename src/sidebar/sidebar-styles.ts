@@ -47,6 +47,7 @@ export const DividerText = styled.h2`
 
 export const RightLine = styled.div`
   background: ${({ theme }) => theme.colors.primary};
+  flex-grow: 1;
   height: 2px;
   width: 60%;
 `
