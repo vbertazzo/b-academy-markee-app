@@ -5,18 +5,9 @@ import { StatusIcon } from './status-icon'
 import { ReactComponent as PlusIcon } from 'ui/assets/plus.svg'
 import { ReactComponent as RemoveIcon } from 'ui/assets/close.svg'
 import logo from './logo.png'
+import { File } from 'resources/files/types'
 
 import * as S from './sidebar-styles'
-
-export type Status = 'editing' | 'saving' | 'saved'
-
-export type File = {
-  id: string
-  name: string
-  content: string
-  active: boolean
-  status: Status
-}
 
 export function Sidebar () {
   const [files, setFiles] = useState<File[]>([])

@@ -4,7 +4,7 @@ import { ReactComponent as Saved } from 'ui/assets/check.svg'
 import { ReactComponent as EditingIcon } from 'ui/assets/ellipse.svg'
 import { ReactComponent as Spinner } from 'ui/assets/spinner.svg'
 
-import { Status } from 'sidebar'
+import { Status } from 'resources/files/types'
 
 type StatusIconProps = {
   status: Status
