@@ -44,7 +44,9 @@ export function Sidebar () {
   return (
     <S.Sidebar>
       <header>
-        <S.Logo src={logo} alt='Markee.' />
+        <S.LogoLink href='/'>
+          <S.Logo src={logo} alt='Markee. home' />
+        </S.LogoLink>
       </header>
 
       <S.Divider>
