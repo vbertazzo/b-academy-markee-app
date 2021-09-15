@@ -1,5 +1,7 @@
-import { StatusIcon } from './status-icon'
+import { useState } from 'react'
+import { v4 as uuid } from 'uuid'
 
+import { StatusIcon } from './status-icon'
 import { ReactComponent as PlusIcon } from 'ui/assets/plus.svg'
 import { ReactComponent as RemoveIcon } from 'ui/assets/close.svg'
 import logo from './logo.png'
@@ -16,31 +18,24 @@ export type File = {
   status: Status
 }
 
-const files: File[] = [
-  {
-    id: '1',
-    name: 'README.md',
-    content: '## Bootcamp Brainn Co. Lorem ipsum dolor sit amet simet',
-    active: false,
-    status: 'editing',
-  },
-  {
-    id: '2',
-    name: 'CONTRIBUTING.md',
-    content: '## Contributing',
-    active: true,
-    status: 'saving',
-  },
-  {
-    id: '3',
-    name: 'LICENSE.md',
-    content: '## License file',
-    active: false,
-    status: 'saved',
-  },
-]
-
 export function Sidebar () {
+  const [files, setFiles] = useState<File[]>([])
+
+  const handleCreateFile = () => {
+    setFiles(prevState => prevState
+      .map(file => ({
+        ...file,
+        active: false,
+      }))
+      .concat({
+        id: uuid(),
+        name: 'Sem título',
+        content: '',
+        active: true,
+        status: 'saved',
+      }))
+  }
+
   return (
     <S.Sidebar>
       <header>
@@ -55,7 +50,7 @@ export function Sidebar () {
         <S.RightLine />
       </S.Divider>
 
-      <S.Button>
+      <S.Button onClick={handleCreateFile}>
         <PlusIcon aria-hidden='true' focusable='false' />
         <span>Add file</span>
       </S.Button>
