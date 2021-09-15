@@ -11,19 +11,13 @@ type StatusIconProps = {
 }
 
 export const StatusIcon = ({ status }: StatusIconProps) => {
-  if (status === 'editing') {
-    return (<EditingIcon aria-hidden='true' focusable='false' />)
-  }
+  const Comp = {
+    editing: EditingIcon,
+    saved: SavedIcon,
+    saving: SavingIcon,
+  }[status]
 
-  if (status === 'saving') {
-    return <SavingIcon aria-hidden='true' focusable='false' />
-  }
-
-  if (status === 'saved') {
-    return <SavedIcon aria-hidden='true' focusable='false' />
-  }
-
-  return null
+  return <Comp aria-hidden='true' focusable='false' />
 }
 
 const SavedIcon = styled(Saved)`
