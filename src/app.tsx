@@ -1,5 +1,17 @@
-function App () {
-  return <div>App</div>
+import styled from 'styled-components/macro'
+
+import { Sidebar } from 'sidebar'
+
+export function App () {
+  return (
+    <Container>
+      <Sidebar />
+    </Container>
+  )
 }
 
-export { App }
+const Container = styled.div`
+  min-height: 100vh;
+
+  display: flex;
+`
