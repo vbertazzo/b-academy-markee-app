@@ -39,7 +39,6 @@ export const ContentInput = styled.textarea`${({ theme }) => css`
   font-family: 'Inconsolata', monospace;
   font-size: 1.8rem;
   height: 100%;
-  line-height: 2.8rem;
   outline: none;
   resize: none;
   transition: all 0.3s linear;
@@ -52,20 +51,15 @@ export const ContentInput = styled.textarea`${({ theme }) => css`
   }
 `}`
 
-export const Preview = styled.section`
-  color: ${({ theme }) => theme.colors.black};
-  font-size: 1rem;
+export const Preview = styled.section`${({ theme }) => css`
+  background: ${theme.colors.white};
+  color: ${theme.colors.black};
+  font-size: 1.8rem;
   height: 100%;
   padding: 4rem 1.2rem 4rem 3.2rem;
   width: 100%;
 
-  h2 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    margin: 0;
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
   }
-
-  p {
-    font-size: 1.8rem;
-  }
-`
+`}`
