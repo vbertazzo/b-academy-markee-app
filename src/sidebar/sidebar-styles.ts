@@ -11,7 +11,6 @@ export const Sidebar = styled.aside`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1rem;
 `
 
 export const Logo = styled.img`

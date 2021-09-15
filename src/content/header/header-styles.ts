@@ -14,18 +14,19 @@ export const FileIcon = styled(File)`
 `
 
 export const FilenameInput = styled.input`${({ theme }) => css`
-background: none;
+  background: none;
   border: none;
   border-left: solid 0px ${theme.colors.primary};
   color: ${theme.colors.black};
   flex-grow: 1;
   font-size: 1.8rem;
   font-weight: 500;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
-  transition: border 0.3s linear;
+  padding: 0.5rem;
+  transition: all 0.3s linear;
 
   &:focus {
-    outline: none;
     border-left: solid 4px ${theme.colors.primary};
+    outline: none;
+    padding-left: 1.2rem;
   }
 `}`
