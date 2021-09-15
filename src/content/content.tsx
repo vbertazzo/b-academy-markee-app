@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, RefObject, useState } from 'react'
 import marked from 'marked'
 import { Header } from './header'
 
@@ -20,7 +20,11 @@ import('highlight.js').then(hljs => {
   })
 })
 
-export function Content () {
+type ContentProps = {
+  inputRef: RefObject<HTMLInputElement>
+}
+
+export function Content ({ inputRef }: ContentProps) {
   const [content, setContent] = useState('')
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -29,7 +33,7 @@ export function Content () {
 
   return (
     <S.Main>
-      <Header />
+      <Header inputRef={inputRef} />
 
       <S.SplitPane>
         <S.Editor>

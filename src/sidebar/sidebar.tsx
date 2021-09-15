@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { RefObject, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 
 import { StatusIcon } from './status-icon'
@@ -9,10 +9,16 @@ import { File } from 'resources/files/types'
 
 import * as S from './sidebar-styles'
 
-export function Sidebar () {
+type SidebarProps = {
+  inputRef: RefObject<HTMLInputElement>
+}
+
+export function Sidebar ({ inputRef }: SidebarProps) {
   const [files, setFiles] = useState<File[]>([])
 
   const handleCreateFile = () => {
+    inputRef.current?.focus()
+
     setFiles(prevState => prevState
       .map(file => ({
         ...file,

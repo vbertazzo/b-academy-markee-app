@@ -1,6 +1,11 @@
+import { RefObject } from 'react'
 import * as S from './header-styles'
 
-export function Header () {
+type HeaderProps = {
+  inputRef: RefObject<HTMLInputElement>
+}
+
+export function Header ({ inputRef }: HeaderProps) {
   return (
     <S.Container>
       <S.FileIcon aria-hidden='true' focusable='false' />
@@ -10,6 +15,7 @@ export function Header () {
         type='text'
         name='filename'
         defaultValue='New file'
+        ref={inputRef}
       />
     </S.Container>
   )
