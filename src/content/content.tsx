@@ -6,11 +6,16 @@ export function Content () {
   return (
     <S.Main>
       <Header />
-      {/* <S.SplitPane>
-        <Editor />
+      <S.SplitPane>
+        <S.Editor>
+          <S.ContentInput placeholder='Your markdown here' />
+        </S.Editor>
         <S.Divider />
-        <Preview />
-      </S.SplitPane> */}
+        <S.Preview>
+          <h2>Bootcamp Brainn Co.</h2>
+          <p>Lorem ipsum dolor sit amet simet</p>
+        </S.Preview>
+      </S.SplitPane>
     </S.Main>
   )
 }
