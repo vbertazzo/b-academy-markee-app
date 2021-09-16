@@ -91,7 +91,7 @@ export function useFiles () {
       }))
       .concat({
         id: uuid(),
-        name: 'Sem título',
+        name: 'New file',
         content: '',
         active: true,
         status: 'saved',
