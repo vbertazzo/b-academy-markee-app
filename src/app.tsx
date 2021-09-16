@@ -32,6 +32,18 @@ export function App () {
         }
         return file
       }))
+
+      timeoutRef.current = window.setTimeout(() => {
+        setFiles(prevState => prevState.map(file => {
+          if (file.id === selectedFile.id) {
+            return {
+              ...file,
+              status: 'saved',
+            }
+          }
+          return file
+        }))
+      }, 300)
     }, 300)
   }, [selectedFile])
 
