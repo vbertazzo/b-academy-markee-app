@@ -54,6 +54,8 @@ export function useFiles () {
       const storageFiles = await localforage.getItem<File[]>('files')
 
       if (!storageFiles) {
+        handleCreateFile()
+
         return
       }
 
