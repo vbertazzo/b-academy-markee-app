@@ -138,7 +138,7 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
   height: 100%;
   letter-spacing: -0.02rem;
   opacity: ${isActive ? 1 : 0.65};
-  padding-left: 3.2rem;
+  padding-left: 4rem;
   padding-right: 3.2rem;
   text-decoration: none;
   transition: opacity 0.2s linear;
