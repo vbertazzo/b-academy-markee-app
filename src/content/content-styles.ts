@@ -51,12 +51,19 @@ export const ContentInput = styled.textarea`${({ theme }) => css`
   }
 `}`
 
-export const Preview = styled.section`${({ theme }) => css`
+export const PreviewWrapper = styled.div`
+  height: 100%;
+  overflow-y: hidden;
+  padding: 4rem 1.2rem 4rem 3.2rem;
+  width: 100%;
+`
+
+export const Preview = styled.article`${({ theme }) => css`
   background: ${theme.colors.white};
   color: ${theme.colors.black};
   font-size: 1.8rem;
   height: 100%;
-  padding: 4rem 1.2rem 4rem 3.2rem;
+  overflow-y: auto;
   width: 100%;
 
   h1, h2, h3, h4, h5, h6 {

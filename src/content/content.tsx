@@ -55,9 +55,11 @@ export function Content ({ inputRef, selectedFile, onUpdate }: ContentProps) {
 
         <S.Divider />
 
-        <S.Preview
-          dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
-        />
+        <S.PreviewWrapper>
+          <S.Preview
+            dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
+          />
+        </S.PreviewWrapper>
       </S.SplitPane>
     </S.Main>
   )
