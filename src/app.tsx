@@ -69,8 +69,7 @@ export function App () {
       }))
   }
 
-  const handleRemoveFile = (id: string) => (e: MouseEvent) => {
-    e.stopPropagation()
+  const handleRemoveFile = (id: string) => {
     setFiles(prevState => prevState.filter(file => file.id !== id))
   }
 
