@@ -8,22 +8,19 @@ import { Content } from 'content'
 
 export function App () {
   const inputRef = useRef<HTMLInputElement>(null)
-  const timeoutRef = useRef<number | null>(null)
   const [files, setFiles] = useState<File[]>([])
 
   const selectedFile = files.find(file => file.active)
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>
+
     function updateStatus () {
       if (!selectedFile || selectedFile.status !== 'editing') {
         return
       }
 
-      if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current)
-      }
-
-      timeoutRef.current = window.setTimeout(() => {
+      timer = setTimeout(() => {
         setFiles(prevState => prevState.map(file => {
           if (file.id === selectedFile.id) {
             return {
@@ -31,10 +28,11 @@ export function App () {
               status: 'saving',
             }
           }
+
           return file
         }))
 
-        timeoutRef.current = window.setTimeout(() => {
+        setTimeout(() => {
           setFiles(prevState => prevState.map(file => {
             if (file.id === selectedFile.id) {
               return {
@@ -42,6 +40,7 @@ export function App () {
                 status: 'saved',
               }
             }
+
             return file
           }))
         }, 300)
@@ -49,6 +48,8 @@ export function App () {
     }
 
     updateStatus()
+
+    return () => clearTimeout(timer)
   }, [selectedFile])
 
   const handleCreateFile = () => {
