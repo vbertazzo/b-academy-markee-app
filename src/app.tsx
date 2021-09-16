@@ -14,37 +14,41 @@ export function App () {
   const selectedFile = files.find(file => file.active)
 
   useEffect(() => {
-    if (!selectedFile || selectedFile.status !== 'editing') {
-      return
-    }
+    function updateStatus () {
+      if (!selectedFile || selectedFile.status !== 'editing') {
+        return
+      }
 
-    if (timeoutRef.current) {
-      window.clearTimeout(timeoutRef.current)
-    }
-
-    timeoutRef.current = window.setTimeout(() => {
-      setFiles(prevState => prevState.map(file => {
-        if (file.id === selectedFile.id) {
-          return {
-            ...file,
-            status: 'saving',
-          }
-        }
-        return file
-      }))
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current)
+      }
 
       timeoutRef.current = window.setTimeout(() => {
         setFiles(prevState => prevState.map(file => {
           if (file.id === selectedFile.id) {
             return {
               ...file,
-              status: 'saved',
+              status: 'saving',
             }
           }
           return file
         }))
+
+        timeoutRef.current = window.setTimeout(() => {
+          setFiles(prevState => prevState.map(file => {
+            if (file.id === selectedFile.id) {
+              return {
+                ...file,
+                status: 'saved',
+              }
+            }
+            return file
+          }))
+        }, 300)
       }, 300)
-    }, 300)
+    }
+
+    updateStatus()
   }, [selectedFile])
 
   const handleCreateFile = () => {
