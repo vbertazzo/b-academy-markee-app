@@ -2,6 +2,7 @@ import styled from 'styled-components/macro'
 
 import { Sidebar } from 'sidebar'
 import { Content } from 'content'
+import { Onboard } from 'onboard'
 
 import { useFiles } from 'resources/files/use-files'
 
@@ -24,11 +25,15 @@ export function App () {
         onSelectFile={handleSelectFile}
         onRemoveFile={handleRemoveFile}
       />
-      <Content
-        inputRef={inputRef}
-        onUpdate={handleUpdateFile}
-        selectedFile={selectedFile}
-      />
+
+      {files.length === 0 && <Onboard onCreateFile={handleCreateFile} />}
+
+      {files.length > 0 &&
+        <Content
+          inputRef={inputRef}
+          onUpdate={handleUpdateFile}
+          selectedFile={selectedFile}
+        />}
     </Container>
   )
 }
