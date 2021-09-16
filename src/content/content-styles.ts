@@ -63,10 +63,24 @@ export const Preview = styled.article`${({ theme }) => css`
   color: ${theme.colors.black};
   font-size: 1.8rem;
   height: 100%;
+  line-height: 3rem;
   overflow-y: auto;
+  padding: 0 0.3rem;
   width: 100%;
 
   h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
+  }
+
+  a:focus {
+    outline: solid 2px ${theme.colors.black};
+  }
+
+  a:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  a:focus-visible {
+    outline: solid 2px ${theme.colors.black};
   }
 `}`
