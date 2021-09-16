@@ -139,6 +139,7 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
   letter-spacing: -0.02rem;
   opacity: ${isActive ? 1 : 0.65};
   padding-left: 3.2rem;
+  padding-right: 3.2rem;
   text-decoration: none;
   transition: opacity 0.2s linear;
   width: 100%;
@@ -171,6 +172,7 @@ type ListItemProps = {
 export const ListItem = styled.li<ListItemProps>`${({ theme, isActive }) => css`
   background: ${isActive ? theme.colors.lightBlack : theme.colors.black};
   border-radius: 0.6rem;
+  min-height: 3.7rem;
   padding: 0.8rem 1rem;
   position: relative;
   transition: background 0.2s linear;
@@ -212,6 +214,7 @@ export const RemoveButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
   z-index: 3;
 
   display: none;
