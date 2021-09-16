@@ -50,6 +50,20 @@ export function useFiles () {
   }, [selectedFile])
 
   useEffect(() => {
+    async function loadFilesFromStorage () {
+      const storageFiles = await localforage.getItem<File[]>('files')
+
+      if (!storageFiles) {
+        return
+      }
+
+      setFiles(storageFiles)
+    }
+
+    loadFilesFromStorage()
+  }, [])
+
+  useEffect(() => {
     function saveFilesToStorage () {
       localforage.setItem('files', files)
     }
