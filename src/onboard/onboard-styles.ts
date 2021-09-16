@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/macro'
 
 import { ReactComponent as Writing } from './illustration.svg'
 
-export const Wrapper = styled.section`
+export const Main = styled.main`
   height: 100%;
   width: 100%;
 
@@ -12,7 +12,7 @@ export const Wrapper = styled.section`
   justify-content: center;
 `
 
-export const MessageContainer = styled.div`
+export const MessageSection = styled.section`
   color: ${({ theme }) => theme.colors.black};
   font-size: 1.4rem;
   width: 30rem;

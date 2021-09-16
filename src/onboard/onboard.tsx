@@ -8,15 +8,15 @@ type OnboardProps = {
 
 export function Onboard ({ onCreateFile }: OnboardProps) {
   return (
-    <S.Wrapper>
-      <S.MessageContainer>
+    <S.Main>
+      <S.MessageSection>
         <h2>Add a new file to start.</h2>
         <S.Button onClick={onCreateFile}>
-          <AddIcon />
+          <AddIcon aria-hidden='true' focusable='false' />
           <span>Add file</span>
         </S.Button>
-      </S.MessageContainer>
-      <S.Illustration />
-    </S.Wrapper>
+      </S.MessageSection>
+      <S.Illustration aria-hidden='true' focusable='false' />
+    </S.Main>
   )
 }
