@@ -5,9 +5,15 @@ type HeaderProps = {
   inputRef: RefObject<HTMLInputElement>
   selectedFileName: string
   onUpdate: ({ type, value }: Record<string, string>) => void
+  onCopy: () => void
 }
 
-export function Header ({ inputRef, selectedFileName, onUpdate }: HeaderProps) {
+export function Header ({
+  inputRef,
+  selectedFileName,
+  onUpdate,
+  onCopy,
+}: HeaderProps) {
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     onUpdate({ type: 'name', value: e.target.value })
   }
@@ -15,6 +21,7 @@ export function Header ({ inputRef, selectedFileName, onUpdate }: HeaderProps) {
   return (
     <S.Container>
       <S.FileIcon aria-hidden='true' focusable='false' />
+
       <S.FilenameInput
         aria-label='File name'
         autoFocus
@@ -23,6 +30,11 @@ export function Header ({ inputRef, selectedFileName, onUpdate }: HeaderProps) {
         type='text'
         value={selectedFileName}
       />
+
+      <S.CopyButton onClick={onCopy}>
+        <S.CopyIcon aria-hidden='true' focusable='false' />
+        <span>Copy to clipboard</span>
+      </S.CopyButton>
     </S.Container>
   )
 }

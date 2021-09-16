@@ -1,7 +1,9 @@
 import { ChangeEvent, RefObject } from 'react'
 import marked from 'marked'
 import { Header } from './header'
+import { Toast } from './toast'
 
+import { useToast } from './toast/use-toast'
 import { File } from 'resources/files/types'
 
 import 'highlight.js/styles/xcode.css'
@@ -27,9 +29,35 @@ type ContentProps = {
   onUpdate: ({ type, value }: Record<string, string>) => void
 }
 
-export function Content ({ inputRef, selectedFile, onUpdate }: ContentProps) {
+export function Content ({
+  inputRef,
+  selectedFile,
+  onUpdate,
+}: ContentProps) {
+  const {
+    setToastMessage,
+    openToast,
+    isToastVisible,
+    toastMessage,
+  } = useToast()
+
   const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onUpdate({ type: 'content', value: e.target.value })
+  }
+
+  const handleCopyClick = () => {
+    if (selectedFile) {
+      navigator.clipboard.writeText(selectedFile.content).then(
+        () => {
+          setToastMessage('Copied successfully! ✔️')
+          openToast()
+        },
+        () => {
+          setToastMessage('Copy failed! 💔')
+          openToast()
+        },
+      )
+    }
   }
 
   if (!selectedFile) {
@@ -38,8 +66,13 @@ export function Content ({ inputRef, selectedFile, onUpdate }: ContentProps) {
 
   return (
     <S.Main>
+      {isToastVisible && (
+        <Toast>{toastMessage}</Toast>
+      )}
+
       <Header
         inputRef={inputRef}
+        onCopy={handleCopyClick}
         onUpdate={onUpdate}
         selectedFileName={selectedFile.name}
       />
