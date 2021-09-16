@@ -64,6 +64,11 @@ export function App () {
       }))
   }
 
+  const handleRemoveFile = (id: string) => (e: MouseEvent) => {
+    e.stopPropagation()
+    setFiles(prevState => prevState.filter(file => file.id !== id))
+  }
+
   const handleSelectFile = (id: string) => (e: MouseEvent) => {
     e.preventDefault()
     inputRef.current?.focus()
@@ -103,6 +108,7 @@ export function App () {
         files={files}
         onCreateFile={handleCreateFile}
         onSelectFile={handleSelectFile}
+        onRemoveFile={handleRemoveFile}
       />
       <Content
         inputRef={inputRef}

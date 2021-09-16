@@ -12,9 +12,15 @@ type SidebarProps = {
   files: File[]
   onCreateFile: () => void
   onSelectFile: (id: string) => (e: MouseEvent) => void
+  onRemoveFile: (id: string) => (e: MouseEvent) => void
 }
 
-export function Sidebar ({ files, onCreateFile, onSelectFile }: SidebarProps) {
+export function Sidebar ({
+  files,
+  onCreateFile,
+  onSelectFile,
+  onRemoveFile,
+}: SidebarProps) {
   return (
     <S.Sidebar>
       <header>
@@ -54,6 +60,7 @@ export function Sidebar ({ files, onCreateFile, onSelectFile }: SidebarProps) {
                 <S.RemoveButton
                   title={`Remove ${file.name}`}
                   aria-labelledby='button-label'
+                  onClick={onRemoveFile(file.id)}
                 >
                   <span id='button-label' hidden>Remove</span>
                   <RemoveIcon aria-hidden='true' focusable='false' />

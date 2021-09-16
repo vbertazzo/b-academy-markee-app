@@ -214,6 +214,7 @@ export const RemoveButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
   z-index: 3;
 
   display: none;
