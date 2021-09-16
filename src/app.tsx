@@ -1,4 +1,4 @@
-import { useRef, useState, MouseEvent } from 'react'
+import { useRef, useState, MouseEvent, useEffect } from 'react'
 import { v4 as uuid } from 'uuid'
 import styled from 'styled-components/macro'
 
@@ -8,9 +8,32 @@ import { Content } from 'content'
 
 export function App () {
   const inputRef = useRef<HTMLInputElement>(null)
+  const timeoutRef = useRef<number | null>(null)
   const [files, setFiles] = useState<File[]>([])
 
   const selectedFile = files.find(file => file.active)
+
+  useEffect(() => {
+    if (!selectedFile || selectedFile.status !== 'editing') {
+      return
+    }
+
+    if (timeoutRef.current) {
+      window.clearTimeout(timeoutRef.current)
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      setFiles(prevState => prevState.map(file => {
+        if (file.id === selectedFile.id) {
+          return {
+            ...file,
+            status: 'saving',
+          }
+        }
+        return file
+      }))
+    }, 300)
+  }, [selectedFile])
 
   const handleCreateFile = () => {
     inputRef.current?.focus()
