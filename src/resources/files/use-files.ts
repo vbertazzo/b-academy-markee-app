@@ -10,6 +10,38 @@ export function useFiles () {
   const selectedFile = files.find(file => file.active)
 
   useEffect(() => {
+    async function loadFilesFromStorage () {
+      const storageFiles = await localforage.getItem<File[]>('files')
+
+      if (!storageFiles) {
+        handleCreateFile()
+
+        return
+      }
+
+      setFiles(storageFiles)
+    }
+
+    loadFilesFromStorage()
+  }, [])
+
+  useEffect(() => {
+    function saveFilesToStorage () {
+      localforage.setItem('files', files)
+    }
+
+    saveFilesToStorage()
+  }, [files])
+
+  useEffect(() => {
+    if (!selectedFile) {
+      return
+    }
+
+    window.history.replaceState(null, '', `/file/${selectedFile.id}`)
+  }, [selectedFile])
+
+  useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
 
     function updateStatus () {
@@ -48,30 +80,6 @@ export function useFiles () {
 
     return () => clearTimeout(timer)
   }, [selectedFile])
-
-  useEffect(() => {
-    async function loadFilesFromStorage () {
-      const storageFiles = await localforage.getItem<File[]>('files')
-
-      if (!storageFiles) {
-        handleCreateFile()
-
-        return
-      }
-
-      setFiles(storageFiles)
-    }
-
-    loadFilesFromStorage()
-  }, [])
-
-  useEffect(() => {
-    function saveFilesToStorage () {
-      localforage.setItem('files', files)
-    }
-
-    saveFilesToStorage()
-  }, [files])
 
   const handleCreateFile = () => {
     inputRef.current?.focus()
