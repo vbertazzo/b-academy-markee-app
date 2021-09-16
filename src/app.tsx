@@ -50,14 +50,16 @@ export function App () {
       return
     }
 
-    const updatedfiles = files.map(file => {
+    setFiles(prevState => prevState.map(file => {
       if (file.id === selectedFile.id) {
-        return { ...file, [type]: value }
+        return {
+          ...file,
+          [type]: value,
+          status: 'editing',
+        }
       }
       return file
-    })
-
-    setFiles(updatedfiles)
+    }))
   }
 
   return (
