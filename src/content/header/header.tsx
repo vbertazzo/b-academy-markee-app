@@ -17,6 +17,7 @@ export function Header ({ inputRef, selectedFileName, onUpdate }: HeaderProps) {
       <S.FileIcon aria-hidden='true' focusable='false' />
       <S.FilenameInput
         aria-label='File name'
+        autoFocus
         onChange={handleNameChange}
         ref={inputRef}
         type='text'
