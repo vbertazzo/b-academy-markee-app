@@ -13,6 +13,16 @@ export const Sidebar = styled.aside`
   flex-direction: column;
 `
 
+export const VisuallyHiddenH1 = styled.h1`
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+`
+
 export const LogoLink = styled.a`${({ theme }) => css`
   &:focus {
     outline: solid 2px ${theme.colors.primary};

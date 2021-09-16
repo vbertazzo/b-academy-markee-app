@@ -24,6 +24,9 @@ export function Sidebar ({
   return (
     <S.Sidebar>
       <header>
+        <S.VisuallyHiddenH1>
+          Markee - Markdown Editor
+        </S.VisuallyHiddenH1>
         <S.LogoLink href='/'>
           <S.Logo src={logo} alt='Markee. home' />
         </S.LogoLink>
