@@ -79,7 +79,7 @@ export function App () {
     })))
   }
 
-  const updateFile = ({ type, value }: Record<string, string>) => {
+  const handleUpdateFile = ({ type, value }: Record<string, string>) => {
     if (!selectedFile) {
       return
     }
@@ -112,7 +112,7 @@ export function App () {
       />
       <Content
         inputRef={inputRef}
-        onUpdate={updateFile}
+        onUpdate={handleUpdateFile}
         selectedFile={selectedFile}
       />
     </Container>
