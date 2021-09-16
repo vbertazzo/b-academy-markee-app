@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, MouseEvent } from 'react'
 import { v4 as uuid } from 'uuid'
 import styled from 'styled-components/macro'
 
@@ -29,6 +29,16 @@ export function App () {
       }))
   }
 
+  const handleSelectFile = (id: string) => (e: MouseEvent) => {
+    e.preventDefault()
+    inputRef.current?.focus()
+
+    setFiles(prevState => prevState.map(file => ({
+      ...file,
+      active: file.id === id,
+    })))
+  }
+
   const updateFile = ({ type, value }: Record<string, string>) => {
     if (!selectedFile) {
       return
@@ -52,7 +62,11 @@ export function App () {
 
   return (
     <Container>
-      <Sidebar files={files} onCreateFile={handleCreateFile} />
+      <Sidebar
+        files={files}
+        onCreateFile={handleCreateFile}
+        onSelectFile={handleSelectFile}
+      />
       <Content
         inputRef={inputRef}
         onUpdate={updateFile}
