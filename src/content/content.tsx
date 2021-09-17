@@ -32,6 +32,19 @@ export function Content ({ inputRef, selectedFile, onUpdate }: ContentProps) {
     onUpdate({ type: 'content', value: e.target.value })
   }
 
+  const handleCopyClick = () => {
+    if (selectedFile) {
+      navigator.clipboard.writeText(selectedFile.content).then(
+        () => {
+          console.log('Copied!')
+        },
+        () => {
+          console.log('Failed!')
+        },
+      )
+    }
+  }
+
   if (!selectedFile) {
     return null
   }
@@ -40,6 +53,7 @@ export function Content ({ inputRef, selectedFile, onUpdate }: ContentProps) {
     <S.Main>
       <Header
         inputRef={inputRef}
+        onCopy={handleCopyClick}
         onUpdate={onUpdate}
         selectedFileName={selectedFile.name}
       />
