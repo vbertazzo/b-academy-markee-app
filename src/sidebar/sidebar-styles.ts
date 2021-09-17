@@ -151,6 +151,7 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
   line-height: 2.1rem;
   opacity: ${isActive ? 1 : 0.65};
   overflow: hidden;
+  min-height: 2.08rem;
   padding-left: 4rem;
   padding-right: 3.2rem;
   text-decoration: none;
@@ -184,7 +185,6 @@ type ListItemProps = {
 export const ListItem = styled.li<ListItemProps>`${({ theme, isActive }) => css`
   background: ${isActive ? theme.colors.lightBlack : theme.colors.black};
   border-radius: 0.6rem;
-  min-height: 3.7rem;
   padding: 0.8rem 1rem;
   position: relative;
   transition: background 0.2s linear;
