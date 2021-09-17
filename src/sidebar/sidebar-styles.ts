@@ -119,8 +119,9 @@ export const Button = styled.button`${({ theme }) => css`
 export const List = styled.ul`
   list-style: none;
   margin-top: 3.2rem;
-  width: 100%;
+  overflow-y: auto;
   padding: 0;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
