@@ -40,6 +40,12 @@ export function useFiles () {
   }, [selectedFile])
 
   useEffect(() => {
+    if (selectedFile) {
+      document.title = selectedFile.name
+    }
+  }, [selectedFile])
+
+  useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
 
     function updateStatus () {
