@@ -59,6 +59,12 @@ export const CopyButton = styled.button`${({ theme }) => css`
       animation: ${dash} 1.5s reverse;
       color: ${theme.colors.primaryDark};
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      svg {
+        animation: none;
+      }
+    }
   }
 
   &:focus {
