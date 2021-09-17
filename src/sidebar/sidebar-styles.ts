@@ -147,16 +147,17 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
   font-size: 1.6rem;
   height: 100%;
   letter-spacing: -0.02rem;
+  line-height: 2.1rem;
   opacity: ${isActive ? 1 : 0.65};
+  overflow: hidden;
   padding-left: 4rem;
   padding-right: 3.2rem;
   text-decoration: none;
+  text-overflow: ellipsis;
   transition: opacity 0.2s linear;
+  vertical-align: middle;
   width: 100%;
   z-index: 2;
-
-  display: flex;
-  align-items: center;
 
   &:focus {
     outline: solid 2px ${theme.colors.primary};
