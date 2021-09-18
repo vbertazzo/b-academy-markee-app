@@ -2,12 +2,25 @@ import styled, { css, keyframes } from 'styled-components/macro'
 import { ReactComponent as File } from 'ui/assets/file-text.svg'
 import { ReactComponent as Copy } from 'ui/assets/copy.svg'
 
-export const Container = styled.div`
+export const Container = styled.div`${({ theme }) => css`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+
+  ${theme.breakpoints.forDesktopUp} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`}`
+
+export const FileWrapper = styled.div`
   width: 100%;
 
   display: flex;
   align-items: center;
-  gap: 1.2rem
+  justify-content: center;
 `
 
 export const FileIcon = styled(File)`
@@ -30,6 +43,10 @@ export const FilenameInput = styled.input`${({ theme }) => css`
     outline: none;
     padding-left: 1.2rem;
   }
+
+  ${theme.breakpoints.forDesktopUp} {
+    width: max-content;
+  }
 `}`
 
 const dash = keyframes`
@@ -45,12 +62,12 @@ export const CopyButton = styled.button`${({ theme }) => css`
   cursor: pointer;
   font-size: 1.6rem;
   font-weight: 400;
+  min-width: 20rem;
   transition: color 0.3s ease;
 
   display: flex;
   align-items: center;
   gap: 1rem;
-  justify-content: center;
 
   &:hover {
     color: ${theme.colors.primaryDark};

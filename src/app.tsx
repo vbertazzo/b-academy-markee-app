@@ -10,6 +10,7 @@ import { useFiles } from 'resources/files/use-files'
 
 export function App () {
   const [isSidebarHidden, setIsSidebarHidden] = useState(true)
+  const [isEditorMode, setIsEditorMode] = useState(true)
   const {
     files,
     inputRef,
@@ -20,29 +21,36 @@ export function App () {
     handleUpdateFile,
   } = useFiles()
 
+  const handleDisplayModeChange = () => {
+    setIsEditorMode(prevState => !prevState)
+  }
+
   return (
     <Container>
       <Topbar
+        isEditorMode={isEditorMode}
+        onDisplayModeChange={handleDisplayModeChange}
         onShowSidebar={() => setIsSidebarHidden(false)}
         selectedFileName={selectedFile?.name}
       />
       <Sidebar
         files={files}
-        onCreateFile={handleCreateFile}
-        onSelectFile={handleSelectFile}
-        onRemoveFile={handleRemoveFile}
         isSidebarHidden={isSidebarHidden}
+        onCreateFile={handleCreateFile}
         onHideSidebar={() => setIsSidebarHidden(true)}
+        onRemoveFile={handleRemoveFile}
+        onSelectFile={handleSelectFile}
       />
 
       {files.length === 0 && <Onboard onCreateFile={handleCreateFile} />}
 
       {files.length > 0 &&
         <Content
+          isEditorMode={isEditorMode}
           inputRef={inputRef}
+          onTouch={setIsSidebarHidden}
           onUpdate={handleUpdateFile}
           selectedFile={selectedFile}
-          onTouch={setIsSidebarHidden}
         />}
     </Container>
   )

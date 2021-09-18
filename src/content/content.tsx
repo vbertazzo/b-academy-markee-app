@@ -25,6 +25,7 @@ import('highlight.js').then(hljs => {
 
 type ContentProps = {
   inputRef: RefObject<HTMLInputElement>
+  isEditorMode: boolean
   selectedFile?: File
   onUpdate: ({ type, value }: Record<string, string>) => void
   onTouch: Dispatch<SetStateAction<boolean>>
@@ -32,14 +33,15 @@ type ContentProps = {
 
 export function Content ({
   inputRef,
-  selectedFile,
+  isEditorMode,
   onUpdate,
   onTouch,
+  selectedFile,
 }: ContentProps) {
   const {
-    setToastMessage,
-    openToast,
     isToastVisible,
+    openToast,
+    setToastMessage,
     toastMessage,
   } = useToast()
 
@@ -80,7 +82,7 @@ export function Content ({
       />
 
       <S.SplitPane>
-        <S.Editor>
+        <S.Editor isEditorMode={isEditorMode}>
           <S.ContentInput
             onChange={handleContentChange}
             placeholder='Your markdown here'
@@ -90,7 +92,7 @@ export function Content ({
 
         <S.Divider />
 
-        <S.PreviewWrapper>
+        <S.PreviewWrapper isEditorMode={isEditorMode}>
           <S.Preview
             dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
           />

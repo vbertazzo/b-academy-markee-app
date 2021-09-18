@@ -19,18 +19,33 @@ export const SplitPane = styled.article`
   align-items: center;
 `
 
-export const Divider = styled.div`
-  background: ${({ theme }) => theme.colors.black};
-  height: 90%;
-  opacity: 0.2;
-  width: 2px;
-`
+export const Divider = styled.div`${({ theme }) => css`
+  display: none;
 
-export const Editor = styled.div`
+  ${theme.breakpoints.forDesktopUp} {
+    background: ${theme.colors.black};
+    display: block;
+    height: 90%;
+    opacity: 0.2;
+    width: 2px;
+  }
+`}`
+
+type EditorProps = {
+  isEditorMode: boolean
+}
+
+export const Editor = styled.div<EditorProps>`${({ theme, isEditorMode }) => css`
+  display: ${isEditorMode ? 'block' : 'none'};
   height: 100%;
-  padding: 4rem 3.2rem 4rem 0;
+  padding-top: 4rem;
   width: 100%;
-`
+
+  ${theme.breakpoints.forDesktopUp} {
+    display: block;
+    padding: 4rem 3.2rem 4rem 0;
+  }
+`}`
 
 export const ContentInput = styled.textarea`${({ theme }) => css`
   background: ${theme.colors.white};
@@ -52,12 +67,25 @@ export const ContentInput = styled.textarea`${({ theme }) => css`
   }
 `}`
 
-export const PreviewWrapper = styled.div`
+type PreviewWrapperProps = {
+  isEditorMode: boolean
+}
+
+export const PreviewWrapper = styled.div<PreviewWrapperProps>`${({
+  theme,
+  isEditorMode,
+}) => css`
+  display: ${isEditorMode ? 'none' : 'block'};
   height: 100%;
   overflow-y: hidden;
-  padding: 4rem 1.2rem 4rem 3.2rem;
+  padding-top: 4rem;
   width: 100%;
-`
+
+  ${theme.breakpoints.forDesktopUp} {
+    display: block;
+    padding: 4rem 1.2rem 4rem 3.2rem;
+  }
+`}`
 
 export const Preview = styled.article`${({ theme }) => css`
   background: ${theme.colors.white};
