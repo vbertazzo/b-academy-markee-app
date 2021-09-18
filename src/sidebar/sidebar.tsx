@@ -13,6 +13,8 @@ type SidebarProps = {
   onCreateFile: () => void
   onSelectFile: (id: string) => (e: MouseEvent) => void
   onRemoveFile: (id: string) => void
+  isSidebarHidden: boolean
+  onHideSidebar: () => void
 }
 
 export function Sidebar ({
@@ -20,9 +22,11 @@ export function Sidebar ({
   onCreateFile,
   onSelectFile,
   onRemoveFile,
+  isSidebarHidden,
+  onHideSidebar,
 }: SidebarProps) {
   return (
-    <S.Sidebar>
+    <S.Sidebar isSidebarHidden={isSidebarHidden}>
       <header>
         <S.VisuallyHiddenH1>
           Markee - Markdown Editor
@@ -31,6 +35,10 @@ export function Sidebar ({
           <S.Logo src={logo} alt='Markee. home' />
         </S.LogoLink>
       </header>
+
+      <S.HideSidebarButton onClick={onHideSidebar}>
+        <span>Close Menu</span>
+      </S.HideSidebarButton>
 
       <S.Divider>
         <S.LeftLine />

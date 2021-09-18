@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components/macro'
 
 export const Main = styled.main`
   background: ${({ theme }) => theme.colors.white};
+  grid-area: main;
   height: 100%;
   padding: 2.4rem;
   width: 100%;

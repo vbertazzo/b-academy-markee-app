@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components/macro'
 import { ReactComponent as Writing } from './illustration.svg'
 
 export const Main = styled.main`
+  grid-area: main;
   height: 100%;
   width: 100%;
 

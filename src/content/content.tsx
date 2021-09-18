@@ -1,4 +1,4 @@
-import { ChangeEvent, RefObject } from 'react'
+import { ChangeEvent, RefObject, Dispatch, SetStateAction } from 'react'
 import marked from 'marked'
 import { Header } from './header'
 import { Toast } from './toast'
@@ -27,12 +27,14 @@ type ContentProps = {
   inputRef: RefObject<HTMLInputElement>
   selectedFile?: File
   onUpdate: ({ type, value }: Record<string, string>) => void
+  onTouch: Dispatch<SetStateAction<boolean>>
 }
 
 export function Content ({
   inputRef,
   selectedFile,
   onUpdate,
+  onTouch,
 }: ContentProps) {
   const {
     setToastMessage,
@@ -65,7 +67,7 @@ export function Content ({
   }
 
   return (
-    <S.Main>
+    <S.Main onTouchStart={() => onTouch(true)}>
       {isToastVisible && (
         <Toast>{toastMessage}</Toast>
       )}
