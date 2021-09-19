@@ -7,4 +7,7 @@ export const theme = {
     primary: '#1FC8E1',
     primaryDark: '#18A1B5',
   },
+  breakpoints: {
+    forTabletLandscapeUp: '900px',
+  },
 }

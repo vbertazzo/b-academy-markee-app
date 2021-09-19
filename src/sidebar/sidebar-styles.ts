@@ -2,16 +2,22 @@ import styled, { css } from 'styled-components/macro'
 
 import { ReactComponent as File } from 'ui/assets/file-text.svg'
 
-export const Sidebar = styled.aside`
+export const Sidebar = styled.aside`${({ theme }) => css`
   background: ${({ theme }) => theme.colors.black};
-  max-width: 33.2rem;
-  min-width: 33.2rem;
-  padding: 3.2rem;
+  max-width: 100%;
+  min-width: 32rem;
+  padding: clamp(2rem, 6vw, 3rem);
 
   display: flex;
   align-items: center;
   flex-direction: column;
-`
+
+  @media (min-width: ${theme.breakpoints.forTabletLandscapeUp}) {
+    max-width: 33.2rem;
+    min-width: 33.2rem;
+    padding: 3.2rem;
+  }
+`}`
 
 export const VisuallyHiddenH1 = styled.h1`
   clip: rect(0 0 0 0);
@@ -43,19 +49,27 @@ export const LogoLink = styled.a`${({ theme }) => css`
 
 export const Logo = styled.img`
   height: 4.4rem;
-  margin-top: 1.4rem;
   width: 16.4rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
+    margin-top: 1.4rem;
+  }
 `
 
 export const Divider = styled.div`
   margin-bottom: 2.4rem;
-  margin-top: 5.6rem;
-  width: 100%;
+  margin-top: 2rem;
+  width: min(32rem, 100%);
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
+    margin-top: 5.6rem;
+    width: 100%;
+  }
 `
 
 export const LeftLine = styled.div`
@@ -84,11 +98,10 @@ export const Button = styled.button`${({ theme }) => css`
   border: none;
   border-radius: 0.3rem;
   color: ${theme.colors.lightBlack};
-  cursor: pointer;
   font-size: 1.4rem;
   padding: 0.8rem 0;
   transition: background 0.3s ease-in-out;
-  width: 100%;
+  width: min(32rem, 100%);
 
   display: flex;
   align-items: center;
@@ -114,18 +127,28 @@ export const Button = styled.button`${({ theme }) => css`
     outline-offset: 1rem;
     opacity: 1;
   }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
+    cursor: pointer;
+    width: 100%;
+  }
 `}`
 
 export const List = styled.ul`
   list-style: none;
-  margin-top: 3.2rem;
+  margin: 3.2rem 0 0;
   overflow-y: auto;
-  padding: 0;
+  padding: 0 0 1rem;
   width: 100%;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.8rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
+    flex-direction: column;
+    padding: 0;
+  }
 `
 
 type FileIconProps = {
@@ -151,6 +174,7 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
   line-height: 2.1rem;
   opacity: ${isActive ? 1 : 0.65};
   overflow: hidden;
+  max-width: 18rem;
   min-height: 2.08rem;
   padding-left: 4rem;
   padding-right: 3.2rem;
@@ -159,11 +183,12 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
   transition: opacity 0.2s linear;
   vertical-align: middle;
   width: 100%;
+  white-space: nowrap;
   z-index: 2;
 
   &:focus {
     outline: solid 2px ${theme.colors.primary};
-    outline-offset: 1.2rem;
+    outline-offset: 0.6rem;
     opacity: 1;
   }
 
@@ -173,8 +198,13 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
 
   &:focus-visible {
     outline: solid 2px ${theme.colors.primary};
-    outline-offset: 1.2rem;
+    outline-offset: 0.6rem;
     opacity: 1;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
+    max-width: 100%;
+    white-space: normal;
   }
 `} `
 
@@ -217,25 +247,41 @@ export const StatusContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: absolute;
   right: 1rem;
 `
 
-export const RemoveButton = styled.button`
-  background: transparent;
+export const RemoveButton = styled.button`${({ theme }) => css`
+background: transparent;
   border: none;
-  cursor: pointer;
   padding: 0;
   z-index: 3;
 
-  display: none;
   justify-content: center;
   align-items: center;
 
   svg {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${theme.colors.white};
     height: 1.8rem;
     width: 1.8rem;
   }
-`
+
+  &:focus {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 0.6rem;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 0.6rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
+    display: none;
+    cursor: pointer;
+  }
+`}`

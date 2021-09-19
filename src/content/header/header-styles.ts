@@ -7,7 +7,8 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
-  gap: 1.2rem
+  flex-wrap: wrap;
+  gap: 1.2rem;
 `
 
 export const FileIcon = styled(File)`
@@ -42,7 +43,6 @@ export const CopyButton = styled.button`${({ theme }) => css`
   background: transparent;
   border: none;
   color: ${theme.colors.black};
-  cursor: pointer;
   font-size: 1.6rem;
   font-weight: 400;
   transition: color 0.3s ease;
@@ -50,22 +50,6 @@ export const CopyButton = styled.button`${({ theme }) => css`
   display: flex;
   align-items: center;
   gap: 1rem;
-  justify-content: center;
-
-  &:hover {
-    color: ${theme.colors.primaryDark};
-
-    svg {
-      animation: ${dash} 1.5s reverse;
-      color: ${theme.colors.primaryDark};
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      svg {
-        animation: none;
-      }
-    }
-  }
 
   &:focus {
     outline: solid 2px ${theme.colors.primaryDark};
@@ -79,6 +63,27 @@ export const CopyButton = styled.button`${({ theme }) => css`
   &:focus-visible {
     outline: solid 2px ${theme.colors.primaryDark};
     outline-offset: 1rem;
+  }
+
+  @media (min-width: ${theme.breakpoints.forTabletLandscapeUp}) {
+    cursor: pointer;
+    width: auto;
+    justify-content: center;
+
+    &:hover {
+      color: ${theme.colors.primaryDark};
+
+      svg {
+        animation: ${dash} 1.5s reverse;
+        color: ${theme.colors.primaryDark};
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        svg {
+          animation: none;
+        }
+      }
+    }
   }
 `}`
 
