@@ -2,16 +2,43 @@ import styled, { css } from 'styled-components/macro'
 
 import { ReactComponent as File } from 'ui/assets/file-text.svg'
 
-export const Sidebar = styled.aside`
-  background: ${({ theme }) => theme.colors.black};
-  max-width: 33.2rem;
-  min-width: 33.2rem;
-  padding: 3.2rem;
+type SidebarProps = {
+  isSidebarHidden: boolean
+}
 
-  display: flex;
+export const Sidebar = styled.aside<SidebarProps>`${({
+  theme,
+  isSidebarHidden,
+}) => css`
+  background: ${theme.colors.black};
+  grid-area: sidebar;
+  min-width: min(33.2rem, 100%);
+  padding: 3.2rem;
+  z-index: 2;
+
+  display: ${isSidebarHidden ? 'none' : 'flex'};
   align-items: center;
   flex-direction: column;
-`
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+
+  @media (prefers-reduced-motion: reduce) {
+    & {
+      animation: none;
+    }
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    animation: none;
+    display: flex;
+    max-width: 33.2rem;
+    min-width: 33.2rem;
+    position: static;
+  }
+`}`
 
 export const VisuallyHiddenH1 = styled.h1`
   clip: rect(0 0 0 0);
@@ -46,6 +73,41 @@ export const Logo = styled.img`
   margin-top: 1.4rem;
   width: 16.4rem;
 `
+
+export const HideSidebarButton = styled.button`${({ theme }) => css`
+  background: ${theme.colors.white};
+  border: none;
+  border-radius: 0.3rem;
+  color: ${theme.colors.lightBlack};
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 5.6rem;
+  padding: 0.8rem 0;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1rem;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: solid 2px ${theme.colors.primary};
+    outline-offset: 1rem;
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    display: none;
+  }
+`}`
 
 export const Divider = styled.div`
   margin-bottom: 2.4rem;
@@ -84,8 +146,8 @@ export const Button = styled.button`${({ theme }) => css`
   border: none;
   border-radius: 0.3rem;
   color: ${theme.colors.lightBlack};
-  cursor: pointer;
   font-size: 1.4rem;
+  font-weight: 700;
   padding: 0.8rem 0;
   transition: background 0.3s ease-in-out;
   width: 100%;
@@ -113,6 +175,10 @@ export const Button = styled.button`${({ theme }) => css`
     outline: solid 2px ${theme.colors.primary};
     outline-offset: 1rem;
     opacity: 1;
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    cursor: pointer;
   }
 `}`
 
@@ -163,7 +229,7 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
 
   &:focus {
     outline: solid 2px ${theme.colors.primary};
-    outline-offset: 1.2rem;
+    outline-offset: 0.6rem;
     opacity: 1;
   }
 
@@ -173,7 +239,7 @@ export const FileLink = styled.a<FileLinkProps>`${({ theme, isActive }) => css`
 
   &:focus-visible {
     outline: solid 2px ${theme.colors.primary};
-    outline-offset: 1.2rem;
+    outline-offset: 0.6rem;
     opacity: 1;
   }
 `} `
@@ -222,14 +288,13 @@ export const StatusContainer = styled.div`
   right: 1rem;
 `
 
-export const RemoveButton = styled.button`
+export const RemoveButton = styled.button`${({ theme }) => css`
   background: transparent;
   border: none;
-  cursor: pointer;
-  padding: 0;
+  padding: 1rem;
   z-index: 3;
 
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -238,4 +303,9 @@ export const RemoveButton = styled.button`
     height: 1.8rem;
     width: 1.8rem;
   }
-`
+
+  ${theme.breakpoints.forDesktopUp} {
+    cursor: pointer;
+    display: none;
+  }
+`}`

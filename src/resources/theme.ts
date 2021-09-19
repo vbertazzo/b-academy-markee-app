@@ -1,3 +1,6 @@
+const customMediaQuery = (minWidth: string) =>
+  `@media (min-width: ${minWidth})`
+
 export const theme = {
   colors: {
     black: '#1E293B',
@@ -6,5 +9,8 @@ export const theme = {
     white: '#FAFAFA',
     primary: '#1FC8E1',
     primaryDark: '#18A1B5',
+  },
+  breakpoints: {
+    forDesktopUp: customMediaQuery('1200px'),
   },
 }

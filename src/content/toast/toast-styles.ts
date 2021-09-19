@@ -25,9 +25,10 @@ export const Toast = styled.div`${({ theme }) => css`
   border-radius: 3rem;
   color: ${theme.colors.white};
   font-size: 1.6rem;
-  left: 50%;
+  right: 5%;
   padding: 2rem 3rem;
   position: fixed;
+
   top: 2rem;
   width: max-content;
 
@@ -38,5 +39,9 @@ export const Toast = styled.div`${({ theme }) => css`
     & {
       animation: none;
     }
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    left: 50%;
   }
 `}`

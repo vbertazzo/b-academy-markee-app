@@ -1,12 +1,15 @@
-import styled from 'styled-components/macro'
+import { useState } from 'react'
+import styled, { css } from 'styled-components/macro'
 
 import { Sidebar } from 'sidebar'
 import { Content } from 'content'
 import { Onboard } from 'onboard'
+import { Topbar } from 'topbar'
 
 import { useFiles } from 'resources/files/use-files'
 
 export function App () {
+  const [isSidebarHidden, setIsSidebarHidden] = useState(true)
   const {
     files,
     inputRef,
@@ -18,12 +21,18 @@ export function App () {
   } = useFiles()
 
   return (
-    <Container>
+    <Container isSidebarHidden={isSidebarHidden}>
+      <Topbar
+        onShowSidebar={() => setIsSidebarHidden(false)}
+        selectedFileName={selectedFile?.name}
+      />
       <Sidebar
         files={files}
+        isSidebarHidden={isSidebarHidden}
         onCreateFile={handleCreateFile}
-        onSelectFile={handleSelectFile}
+        onHideSidebar={() => setIsSidebarHidden(true)}
         onRemoveFile={handleRemoveFile}
+        onSelectFile={handleSelectFile}
       />
 
       {files.length === 0 && <Onboard onCreateFile={handleCreateFile} />}
@@ -31,6 +40,7 @@ export function App () {
       {files.length > 0 &&
         <Content
           inputRef={inputRef}
+          onTouch={setIsSidebarHidden}
           onUpdate={handleUpdateFile}
           selectedFile={selectedFile}
         />}
@@ -38,9 +48,33 @@ export function App () {
   )
 }
 
-const Container = styled.div`
-  height: 100vh;
-  overflow: hidden;
+type ContainerType = {
+  isSidebarHidden: boolean
+}
 
-  display: flex;
-`
+const Container = styled.div<ContainerType>`${({
+  theme,
+  isSidebarHidden,
+}) => css`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas:
+    'topbar'
+    'main'
+  ;
+
+  ${!isSidebarHidden &&
+    css`
+      overflow-y: hidden;
+    `
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas:
+      'sidebar main';
+    overflow: hidden;
+  }
+`}`
