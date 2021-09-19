@@ -79,7 +79,6 @@ export const HideSidebarButton = styled.button`${({ theme }) => css`
   border: none;
   border-radius: 0.3rem;
   color: ${theme.colors.lightBlack};
-  cursor: pointer;
   font-size: 1.4rem;
   font-weight: 700;
   margin-top: 5.6rem;
@@ -147,7 +146,6 @@ export const Button = styled.button`${({ theme }) => css`
   border: none;
   border-radius: 0.3rem;
   color: ${theme.colors.lightBlack};
-  cursor: pointer;
   font-size: 1.4rem;
   font-weight: 700;
   padding: 0.8rem 0;
@@ -177,6 +175,10 @@ export const Button = styled.button`${({ theme }) => css`
     outline: solid 2px ${theme.colors.primary};
     outline-offset: 1rem;
     opacity: 1;
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    cursor: pointer;
   }
 `}`
 

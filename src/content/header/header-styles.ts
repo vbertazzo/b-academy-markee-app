@@ -60,30 +60,13 @@ export const CopyButton = styled.button`${({ theme }) => css`
   background: transparent;
   border: none;
   color: ${theme.colors.black};
-  cursor: pointer;
   font-size: 1.6rem;
   font-weight: 400;
   min-width: 20rem;
-  transition: color 0.3s ease;
 
   display: flex;
   align-items: center;
   gap: 1rem;
-
-  &:hover {
-    color: ${theme.colors.primaryDark};
-
-    svg {
-      animation: ${dash} 1.5s reverse;
-      color: ${theme.colors.primaryDark};
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      svg {
-        animation: none;
-      }
-    }
-  }
 
   &:focus {
     outline: solid 2px ${theme.colors.primaryDark};
@@ -97,6 +80,26 @@ export const CopyButton = styled.button`${({ theme }) => css`
   &:focus-visible {
     outline: solid 2px ${theme.colors.primaryDark};
     outline-offset: 1rem;
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+    color: ${theme.colors.primaryDark};
+
+    svg {
+      animation: ${dash} 1.5s reverse;
+      color: ${theme.colors.primaryDark};
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      svg {
+        animation: none;
+        }
+      }
+    }
   }
 `}`
 
