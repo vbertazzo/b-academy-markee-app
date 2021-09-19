@@ -26,7 +26,7 @@ export function Sidebar ({
   onHideSidebar,
 }: SidebarProps) {
   return (
-    <S.Sidebar isSidebarHidden={isSidebarHidden}>
+    <S.Sidebar isSidebarHidden={isSidebarHidden} aria-label='menu'>
       <header>
         <S.VisuallyHiddenH1>
           Markee - Markdown Editor

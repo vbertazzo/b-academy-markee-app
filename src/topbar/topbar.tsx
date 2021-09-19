@@ -10,7 +10,7 @@ export function Topbar ({
   selectedFileName,
 }: TopbarProps) {
   return (
-    <S.Aside>
+    <S.Aside aria-label='aside top'>
       <S.Button onClick={onShowSidebar}>
         Menu
       </S.Button>
