@@ -1,15 +1,12 @@
-import { useState } from 'react'
-import styled, { css } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 
 import { Sidebar } from 'sidebar'
 import { Content } from 'content'
 import { Onboard } from 'onboard'
-import { Topbar } from 'topbar'
 
 import { useFiles } from 'resources/files/use-files'
 
 export function App () {
-  const [isSidebarHidden, setIsSidebarHidden] = useState(true)
   const {
     files,
     inputRef,
@@ -21,18 +18,12 @@ export function App () {
   } = useFiles()
 
   return (
-    <Container isSidebarHidden={isSidebarHidden}>
-      <Topbar
-        onShowSidebar={() => setIsSidebarHidden(false)}
-        selectedFileName={selectedFile?.name}
-      />
+    <Container>
       <Sidebar
         files={files}
-        isSidebarHidden={isSidebarHidden}
         onCreateFile={handleCreateFile}
-        onHideSidebar={() => setIsSidebarHidden(true)}
-        onRemoveFile={handleRemoveFile}
         onSelectFile={handleSelectFile}
+        onRemoveFile={handleRemoveFile}
       />
 
       {files.length === 0 && <Onboard onCreateFile={handleCreateFile} />}
@@ -40,7 +31,6 @@ export function App () {
       {files.length > 0 &&
         <Content
           inputRef={inputRef}
-          onTouch={setIsSidebarHidden}
           onUpdate={handleUpdateFile}
           selectedFile={selectedFile}
         />}
@@ -48,33 +38,9 @@ export function App () {
   )
 }
 
-type ContainerType = {
-  isSidebarHidden: boolean
-}
-
-const Container = styled.div<ContainerType>`${({
-  theme,
-  isSidebarHidden,
-}) => css`
+const Container = styled.div`
   height: 100vh;
-  display: grid;
-  grid-template-rows: min-content 1fr;
-  grid-template-areas:
-    'topbar'
-    'main'
-  ;
+  overflow: hidden;
 
-  ${!isSidebarHidden &&
-    css`
-      overflow-y: hidden;
-    `
-  }
-
-  ${theme.breakpoints.forDesktopUp} {
-    grid-template-columns: min-content 1fr;
-    grid-template-rows: 100%;
-    grid-template-areas:
-      'sidebar main';
-    overflow: hidden;
-  }
-`}`
+  display: flex;
+`
