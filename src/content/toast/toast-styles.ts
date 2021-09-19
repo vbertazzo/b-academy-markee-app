@@ -25,7 +25,7 @@ export const Toast = styled.div`${({ theme }) => css`
   border-radius: 3rem;
   color: ${theme.colors.white};
   font-size: 1.6rem;
-  left: 50%;
+  right: 3rem;
   padding: 2rem 3rem;
   position: fixed;
   top: 2rem;

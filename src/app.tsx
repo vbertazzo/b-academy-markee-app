@@ -40,7 +40,12 @@ export function App () {
 
 const Container = styled.div`
   height: 100vh;
-  overflow: hidden;
 
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
+    flex-direction: row;
+    overflow: hidden;
+  }
 `
