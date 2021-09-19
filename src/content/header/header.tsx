@@ -20,18 +20,16 @@ export function Header ({
 
   return (
     <S.Container>
-      <S.FileWrapper>
-        <S.FileIcon aria-hidden='true' focusable='false' />
+      <S.FileIcon aria-hidden='true' focusable='false' />
 
-        <S.FilenameInput
-          aria-label='File name'
-          autoFocus
-          onChange={handleNameChange}
-          ref={inputRef}
-          type='text'
-          value={selectedFileName}
-        />
-      </S.FileWrapper>
+      <S.FilenameInput
+        aria-label='File name'
+        autoFocus
+        onChange={handleNameChange}
+        ref={inputRef}
+        type='text'
+        value={selectedFileName}
+      />
 
       <S.CopyButton onClick={onCopy}>
         <S.CopyIcon aria-hidden='true' focusable='false' />

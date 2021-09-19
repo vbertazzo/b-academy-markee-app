@@ -1,4 +1,4 @@
-import { ChangeEvent, RefObject, Dispatch, SetStateAction } from 'react'
+import { ChangeEvent, RefObject } from 'react'
 import marked from 'marked'
 import { Header } from './header'
 import { Toast } from './toast'
@@ -27,19 +27,17 @@ type ContentProps = {
   inputRef: RefObject<HTMLInputElement>
   selectedFile?: File
   onUpdate: ({ type, value }: Record<string, string>) => void
-  onTouch: Dispatch<SetStateAction<boolean>>
 }
 
 export function Content ({
   inputRef,
-  onUpdate,
-  onTouch,
   selectedFile,
+  onUpdate,
 }: ContentProps) {
   const {
-    isToastVisible,
-    openToast,
     setToastMessage,
+    openToast,
+    isToastVisible,
     toastMessage,
   } = useToast()
 
@@ -67,7 +65,7 @@ export function Content ({
   }
 
   return (
-    <S.Main onTouchStart={() => onTouch(true)}>
+    <S.Main>
       {isToastVisible && (
         <Toast>{toastMessage}</Toast>
       )}
@@ -93,7 +91,6 @@ export function Content ({
         <S.PreviewWrapper>
           <S.Preview
             dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
-            tabIndex={0}
           />
         </S.PreviewWrapper>
       </S.SplitPane>
