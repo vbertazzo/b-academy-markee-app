@@ -21,6 +21,7 @@ export const FileWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1.2rem;
 `
 
 export const FileIcon = styled(File)`
