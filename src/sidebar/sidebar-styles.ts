@@ -286,14 +286,13 @@ export const StatusContainer = styled.div`
   right: 1rem;
 `
 
-export const RemoveButton = styled.button`
+export const RemoveButton = styled.button`${({ theme }) => css`
   background: transparent;
   border: none;
-  cursor: pointer;
-  padding: 0;
+  padding: 1rem;
   z-index: 3;
 
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -302,4 +301,9 @@ export const RemoveButton = styled.button`
     height: 1.8rem;
     width: 1.8rem;
   }
-`
+
+  ${theme.breakpoints.forDesktopUp} {
+    cursor: pointer;
+    display: none;
+  }
+`}`

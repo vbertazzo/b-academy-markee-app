@@ -1,15 +1,11 @@
 import * as S from './topbar-styles'
 
 type TopbarProps = {
-  isEditorMode: boolean
-  onDisplayModeChange: () => void
   onShowSidebar: () => void
   selectedFileName: string | undefined
 }
 
 export function Topbar ({
-  isEditorMode,
-  onDisplayModeChange,
   onShowSidebar,
   selectedFileName,
 }: TopbarProps) {
@@ -20,15 +16,10 @@ export function Topbar ({
       </S.Button>
 
       {!!selectedFileName && (
-        <header>
+        <S.Header>
           <S.H2>{selectedFileName}</S.H2>
-        </header>
+        </S.Header>
       )}
-
-      <S.Button
-        onClick={() => onDisplayModeChange()}
-      >{isEditorMode ? 'Preview' : 'Editor'}
-      </S.Button>
     </S.Aside>
   )
 }

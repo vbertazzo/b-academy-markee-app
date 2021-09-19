@@ -10,7 +10,6 @@ import { useFiles } from 'resources/files/use-files'
 
 export function App () {
   const [isSidebarHidden, setIsSidebarHidden] = useState(true)
-  const [isEditorMode, setIsEditorMode] = useState(true)
   const {
     files,
     inputRef,
@@ -21,15 +20,9 @@ export function App () {
     handleUpdateFile,
   } = useFiles()
 
-  const handleDisplayModeChange = () => {
-    setIsEditorMode(prevState => !prevState)
-  }
-
   return (
-    <Container>
+    <Container isSidebarHidden={isSidebarHidden}>
       <Topbar
-        isEditorMode={isEditorMode}
-        onDisplayModeChange={handleDisplayModeChange}
         onShowSidebar={() => setIsSidebarHidden(false)}
         selectedFileName={selectedFile?.name}
       />
@@ -46,7 +39,6 @@ export function App () {
 
       {files.length > 0 &&
         <Content
-          isEditorMode={isEditorMode}
           inputRef={inputRef}
           onTouch={setIsSidebarHidden}
           onUpdate={handleUpdateFile}
@@ -56,9 +48,15 @@ export function App () {
   )
 }
 
-const Container = styled.div`${({ theme }) => css`
+type ContainerType = {
+  isSidebarHidden: boolean
+}
+
+const Container = styled.div<ContainerType>`${({
+  theme,
+  isSidebarHidden,
+}) => css`
   height: 100vh;
-  overflow: hidden;
   display: grid;
   grid-template-rows: min-content 1fr;
   grid-template-areas:
@@ -66,10 +64,17 @@ const Container = styled.div`${({ theme }) => css`
     'main'
   ;
 
+  ${!isSidebarHidden &&
+    css`
+      overflow-y: hidden;
+    `
+  }
+
   ${theme.breakpoints.forDesktopUp} {
     grid-template-columns: min-content 1fr;
     grid-template-rows: 100%;
     grid-template-areas:
       'sidebar main';
+    overflow: hidden;
   }
 `}`

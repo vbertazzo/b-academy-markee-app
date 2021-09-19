@@ -9,18 +9,24 @@ export const Aside = styled.aside`${({ theme }) => css`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 
   ${theme.breakpoints.forDesktopUp} {
     display: none;
   }
 `}`
 
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+`
+
 export const H2 = styled.h2`${({ theme }) => css`
   color: ${theme.colors.white};
   overflow: hidden;
-  max-width: calc(100vw - 22rem);
+  max-width: calc(100vw - 18rem);
   text-overflow: ellipsis;
   white-space: nowrap;
 `}`

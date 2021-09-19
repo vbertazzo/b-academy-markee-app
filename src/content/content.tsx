@@ -25,7 +25,6 @@ import('highlight.js').then(hljs => {
 
 type ContentProps = {
   inputRef: RefObject<HTMLInputElement>
-  isEditorMode: boolean
   selectedFile?: File
   onUpdate: ({ type, value }: Record<string, string>) => void
   onTouch: Dispatch<SetStateAction<boolean>>
@@ -33,7 +32,6 @@ type ContentProps = {
 
 export function Content ({
   inputRef,
-  isEditorMode,
   onUpdate,
   onTouch,
   selectedFile,
@@ -82,7 +80,7 @@ export function Content ({
       />
 
       <S.SplitPane>
-        <S.Editor isEditorMode={isEditorMode}>
+        <S.Editor>
           <S.ContentInput
             onChange={handleContentChange}
             placeholder='Your markdown here'
@@ -92,7 +90,7 @@ export function Content ({
 
         <S.Divider />
 
-        <S.PreviewWrapper isEditorMode={isEditorMode}>
+        <S.PreviewWrapper>
           <S.Preview
             dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
           />

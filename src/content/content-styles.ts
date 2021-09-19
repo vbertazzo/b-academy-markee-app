@@ -1,25 +1,42 @@
 import styled, { css } from 'styled-components/macro'
 
-export const Main = styled.main`
+export const Main = styled.main`${({ theme }) => css`
   background: ${({ theme }) => theme.colors.white};
   grid-area: main;
   height: 100%;
   padding: 2.4rem;
-  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ${theme.breakpoints.forDesktopUp} {
+    background: ${({ theme }) => theme.colors.white};
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    gap: 4rem;
+  }
+`}`
+
+export const SplitPane = styled.div`${({ theme }) => css`
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   gap: 4rem;
-`
 
-export const SplitPane = styled.div`
-  height: 90%;
-  width: 100%;
+  ${theme.breakpoints.forDesktopUp} {
+    height: 90%;
+    width: 100%;
 
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 4rem;
+  }
+`}`
 
 export const Divider = styled.div`${({ theme }) => css`
   display: none;
@@ -33,29 +50,26 @@ export const Divider = styled.div`${({ theme }) => css`
   }
 `}`
 
-type EditorProps = {
-  isEditorMode: boolean
-}
-
-export const Editor = styled.div<EditorProps>`${({ theme, isEditorMode }) => css`
-  display: ${isEditorMode ? 'block' : 'none'};
-  height: 100%;
+export const Editor = styled.div`${({ theme }) => css`
+  border: solid 1px ${theme.colors.gray};
   width: 100%;
 
   ${theme.breakpoints.forDesktopUp} {
+    border: none;
     display: block;
+    height: 100%;
+    width: 100%;
   }
 `}`
 
 export const ContentInput = styled.textarea`${({ theme }) => css`
   background: ${theme.colors.white};
-  border: none;
-  border-left: solid 0px ${theme.colors.primary};
   color: ${theme.colors.black};
   font-family: 'Inconsolata', monospace;
-  font-size: 1.8rem;
-  height: 100%;
+  font-size: clamp(1.6rem, 5vw, 1.8rem);
+  min-height: 40rem;
   outline: none;
+  padding: 1rem;
   resize: none;
   transition: all 0.3s linear;
   width: 100%;
@@ -65,34 +79,27 @@ export const ContentInput = styled.textarea`${({ theme }) => css`
     outline: none;
     padding-left: 2rem;
   }
-`}`
-
-type PreviewWrapperProps = {
-  isEditorMode: boolean
-}
-
-export const PreviewWrapper = styled.div<PreviewWrapperProps>`${({
-  theme,
-  isEditorMode,
-}) => css`
-  display: ${isEditorMode ? 'none' : 'block'};
-  height: 100%;
-  overflow-y: hidden;
-  width: 100%;
 
   ${theme.breakpoints.forDesktopUp} {
-    display: block;
+    border: none;
+    height: 100%;
+  }
+`}`
+
+export const PreviewWrapper = styled.div`${({ theme }) => css`
+  ${theme.breakpoints.forDesktopUp} {
+    height: 100%;
+    overflow-y: hidden;
+    width: 100%;
   }
 `}`
 
 export const Preview = styled.article`${({ theme }) => css`
   background: ${theme.colors.white};
   color: ${theme.colors.black};
-  font-size: 1.8rem;
-  height: 100%;
+  font-size: clamp(1.6rem, 5vw, 1.8rem);
   line-height: 3rem;
-  overflow-y: auto;
-  padding: 0 0.3rem;
+  min-height: 100%;
   width: 100%;
 
   h1, h2, h3, h4, h5, h6 {
@@ -109,5 +116,11 @@ export const Preview = styled.article`${({ theme }) => css`
 
   a:focus-visible {
     outline: solid 2px ${theme.colors.black};
+  }
+
+  ${theme.breakpoints.forDesktopUp} {
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 0.3rem;
   }
 `}`
