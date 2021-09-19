@@ -9,14 +9,16 @@ export const Main = styled.main`
 
   display: flex;
   flex-direction: column;
+  gap: 4rem;
 `
 
-export const SplitPane = styled.article`
-  height: 100%;
+export const SplitPane = styled.div`
+  height: 90%;
   width: 100%;
 
   display: flex;
   align-items: center;
+  gap: 4rem;
 `
 
 export const Divider = styled.div`${({ theme }) => css`
@@ -38,12 +40,10 @@ type EditorProps = {
 export const Editor = styled.div<EditorProps>`${({ theme, isEditorMode }) => css`
   display: ${isEditorMode ? 'block' : 'none'};
   height: 100%;
-  padding-top: 4rem;
   width: 100%;
 
   ${theme.breakpoints.forDesktopUp} {
     display: block;
-    padding: 4rem 3.2rem 4rem 0;
   }
 `}`
 
@@ -78,12 +78,10 @@ export const PreviewWrapper = styled.div<PreviewWrapperProps>`${({
   display: ${isEditorMode ? 'none' : 'block'};
   height: 100%;
   overflow-y: hidden;
-  padding-top: 4rem;
   width: 100%;
 
   ${theme.breakpoints.forDesktopUp} {
     display: block;
-    padding: 4rem 1.2rem 4rem 3.2rem;
   }
 `}`
 

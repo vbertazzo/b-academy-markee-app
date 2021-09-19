@@ -68,7 +68,7 @@ const Container = styled.div`${({ theme }) => css`
 
   ${theme.breakpoints.forDesktopUp} {
     grid-template-columns: min-content 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 100%;
     grid-template-areas:
       'sidebar main';
   }
