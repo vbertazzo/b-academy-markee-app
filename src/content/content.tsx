@@ -93,6 +93,7 @@ export function Content ({
         <S.PreviewWrapper>
           <S.Preview
             dangerouslySetInnerHTML={{ __html: marked(selectedFile.content) }}
+            tabIndex={0}
           />
         </S.PreviewWrapper>
       </S.SplitPane>
