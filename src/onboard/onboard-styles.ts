@@ -13,9 +13,9 @@ export const Main = styled.main`${({ theme }) => css`
   gap: 4rem;
 
   @media (min-width: ${theme.breakpoints.forTabletLandscapeUp}) {
+    width: 100%;
     padding: 4rem;
 
-    justify-content: center;
     flex-direction: row;
     gap: clamp(10rem, 8vw, 16rem);
   }
