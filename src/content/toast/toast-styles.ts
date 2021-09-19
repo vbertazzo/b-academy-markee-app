@@ -21,9 +21,9 @@ const slideAndFade = keyframes`
 
 export const Toast = styled.div`${({ theme }) => css`
   animation: ${slideAndFade} 6s both cubic-bezier(0.645, 0.045, 0.355, 1);
-  background: ${theme.colors.lightBlack};
+  background: ${theme.colors.white};
   border-radius: 3rem;
-  color: ${theme.colors.white};
+  color: ${theme.colors.black};
   font-size: 1.6rem;
   right: 3rem;
   padding: 2rem 3rem;
@@ -38,5 +38,10 @@ export const Toast = styled.div`${({ theme }) => css`
     & {
       animation: none;
     }
+  }
+
+  @media (min-width: ${theme.breakpoints.forTabletLandscapeUp}) {
+    background: ${theme.colors.lightBlack};
+    color: ${theme.colors.white};
   }
 `}`
