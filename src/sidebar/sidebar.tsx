@@ -40,7 +40,7 @@ export function Sidebar ({
 
       <S.AddButton onClick={onCreateFile}>
         <PlusIcon aria-hidden='true' focusable='false' />
-        <span>Add file</span>
+        Add file
       </S.AddButton>
 
       <S.List>

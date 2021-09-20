@@ -13,7 +13,7 @@ export function Onboard ({ onCreateFile }: OnboardProps) {
         <h2>Add a new file to start.</h2>
         <S.Button onClick={onCreateFile}>
           <AddIcon aria-hidden='true' focusable='false' />
-          <span>Add file</span>
+          Add file
         </S.Button>
       </S.MessageSection>
       <S.Illustration aria-hidden='true' focusable='false' />

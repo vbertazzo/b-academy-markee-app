@@ -33,7 +33,7 @@ export function Header ({
 
       <S.CopyButton onClick={onCopy}>
         <S.CopyIcon aria-hidden='true' focusable='false' />
-        <span>Copy to clipboard</span>
+        Copy to clipboard
       </S.CopyButton>
     </S.Container>
   )
