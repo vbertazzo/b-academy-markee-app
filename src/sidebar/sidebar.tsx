@@ -38,10 +38,10 @@ export function Sidebar ({
         <S.RightLine />
       </S.Divider>
 
-      <S.Button onClick={onCreateFile}>
+      <S.AddButton onClick={onCreateFile}>
         <PlusIcon aria-hidden='true' focusable='false' />
         <span>Add file</span>
-      </S.Button>
+      </S.AddButton>
 
       <S.List>
         {files?.map(file => (

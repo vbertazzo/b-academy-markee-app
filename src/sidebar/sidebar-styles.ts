@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components/macro'
 
+import { DefaultButton } from 'ui/default-button'
+
 import { ReactComponent as File } from 'ui/assets/file-text.svg'
 
 export const Sidebar = styled.aside`${({ theme }) => css`
@@ -93,44 +95,15 @@ export const RightLine = styled.div`
   width: 60%;
 `
 
-export const Button = styled.button`${({ theme }) => css`
+export const AddButton = styled(DefaultButton)`${({ theme }) => css`
   background: ${theme.colors.primary};
-  border: none;
-  border-radius: 0.3rem;
-  color: ${theme.colors.lightBlack};
-  font-size: 1.4rem;
   padding: 0.8rem 0;
-  transition: background 0.3s ease-in-out;
   width: min(32rem, 100%);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-
-  &:hover {
-    background: ${theme.colors.primaryDark};
-  }
-
-  &:focus {
-    outline: solid 2px ${theme.colors.primary};
-    outline-offset: 1rem;
-    opacity: 1;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: solid 2px ${theme.colors.primary};
-    outline-offset: 1rem;
-    opacity: 1;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
-    cursor: pointer;
-    width: 100%;
+  @media (min-width: ${theme.breakpoints.forTabletLandscapeUp}) {
+    &:hover {
+      background: ${theme.colors.primaryDark};
+    }
   }
 `}`
 
@@ -251,14 +224,10 @@ export const StatusContainer = styled.div`
   right: 1rem;
 `
 
-export const RemoveButton = styled.button`${({ theme }) => css`
-background: transparent;
-  border: none;
+export const RemoveButton = styled(DefaultButton)`${({ theme }) => css`
+  background: transparent;
   padding: 0;
   z-index: 3;
-
-  justify-content: center;
-  align-items: center;
 
   svg {
     color: ${theme.colors.white};
@@ -267,16 +236,10 @@ background: transparent;
   }
 
   &:focus {
-    outline: solid 2px ${theme.colors.primary};
     outline-offset: 0.6rem;
   }
 
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
-
   &:focus-visible {
-    outline: solid 2px ${theme.colors.primary};
     outline-offset: 0.6rem;
   }
 
