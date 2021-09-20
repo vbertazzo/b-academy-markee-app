@@ -32,6 +32,16 @@ export const FilenameInput = styled.input`${({ theme }) => css`
     outline: none;
     padding-left: 1.2rem;
   }
+
+  a:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    border-left: solid 4px ${theme.colors.primary};
+    outline: none;
+    padding-left: 1.2rem;
+  }
 `}`
 
 const dash = keyframes`

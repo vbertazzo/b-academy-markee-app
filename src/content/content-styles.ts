@@ -69,9 +69,14 @@ export const ContentInput = styled.textarea`${({ theme }) => css`
 
   &:focus {
     border-left: solid 4px ${theme.colors.primary};
-    outline: none;
-    padding-left: 2rem;
+    padding-left: 1.2rem;
   }
+
+  &:focus-visible {
+    border-left: solid 4px ${theme.colors.primary};
+    padding-left: 1.2rem;
+  }
+
 `}`
 
 export const PreviewWrapper = styled.div`
@@ -97,15 +102,15 @@ export const Preview = styled.article`${({ theme }) => css`
     margin-top: 0;
   }
 
-  a:focus {
-    outline: solid 2px ${theme.colors.black};
+  &:focus {
+    outline: solid 2px ${theme.colors.primaryDark};
   }
 
-  a:focus:not(:focus-visible) {
+  &:focus:not(:focus-visible) {
     outline: none;
   }
 
-  a:focus-visible {
-    outline: solid 2px ${theme.colors.black};
+  &:focus-visible {
+    outline: solid 2px ${theme.colors.primaryDark};
   }
 `}`
