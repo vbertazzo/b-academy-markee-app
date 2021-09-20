@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components/macro'
-import { ReactComponent as File } from 'ui/assets/file-text.svg'
-import { ReactComponent as Copy } from 'ui/assets/copy.svg'
+import { DefaultButton } from 'ui/default-button'
+import { FileText, Copy } from 'ui/icons'
 
 export const Container = styled.div`
   width: 100%;
@@ -11,7 +11,7 @@ export const Container = styled.div`
   gap: 1.2rem;
 `
 
-export const FileIcon = styled(File)`
+export const FileIcon = styled(FileText)`
   color: ${({ theme }) => theme.colors.primary};
 `
 
@@ -31,6 +31,16 @@ export const FilenameInput = styled.input`${({ theme }) => css`
     outline: none;
     padding-left: 1.2rem;
   }
+
+  a:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    border-left: solid 4px ${theme.colors.primary};
+    outline: none;
+    padding-left: 1.2rem;
+  }
 `}`
 
 const dash = keyframes`
@@ -39,36 +49,22 @@ const dash = keyframes`
   }
 `
 
-export const CopyButton = styled.button`${({ theme }) => css`
+export const CopyButton = styled(DefaultButton)`${({ theme }) => css`
   background: transparent;
-  border: none;
   color: ${theme.colors.black};
   font-size: 1.6rem;
-  font-weight: 400;
   transition: color 0.3s ease;
-
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 
   &:focus {
     outline: solid 2px ${theme.colors.primaryDark};
-    outline-offset: 1rem;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
   }
 
   &:focus-visible {
     outline: solid 2px ${theme.colors.primaryDark};
-    outline-offset: 1rem;
   }
 
   @media (min-width: ${theme.breakpoints.forTabletLandscapeUp}) {
-    cursor: pointer;
     width: auto;
-    justify-content: center;
 
     &:hover {
       color: ${theme.colors.primaryDark};

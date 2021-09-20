@@ -1,8 +1,6 @@
 import styled, { keyframes } from 'styled-components/macro'
 
-import { ReactComponent as Saved } from 'ui/assets/check.svg'
-import { ReactComponent as EditingIcon } from 'ui/assets/ellipse.svg'
-import { ReactComponent as Spinner } from 'ui/assets/spinner.svg'
+import { Check as Saved, Ellipse as EditingIcon, Spinner } from 'ui/icons'
 
 import { Status } from 'resources/files/types'
 

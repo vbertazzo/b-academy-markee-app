@@ -2,8 +2,7 @@ import { MouseEvent } from 'react'
 import { File } from 'resources/files/types'
 
 import { StatusIcon } from './status-icon'
-import { ReactComponent as PlusIcon } from 'ui/assets/plus.svg'
-import { ReactComponent as RemoveIcon } from 'ui/assets/close.svg'
+import { Close as RemoveIcon, Plus as PlusIcon } from 'ui/icons'
 import logo from './logo.png'
 
 import * as S from './sidebar-styles'
@@ -38,10 +37,10 @@ export function Sidebar ({
         <S.RightLine />
       </S.Divider>
 
-      <S.Button onClick={onCreateFile}>
+      <S.AddButton onClick={onCreateFile}>
         <PlusIcon aria-hidden='true' focusable='false' />
-        <span>Add file</span>
-      </S.Button>
+        Add file
+      </S.AddButton>
 
       <S.List>
         {files?.map(file => (
