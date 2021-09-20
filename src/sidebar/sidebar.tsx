@@ -31,11 +31,9 @@ export function Sidebar ({
         </S.LogoLink>
       </header>
 
-      <S.Divider>
-        <S.LeftLine />
-        <S.DividerText>Files</S.DividerText>
-        <S.RightLine />
-      </S.Divider>
+      <S.H2>
+        <span>Files</span>
+      </S.H2>
 
       <S.AddButton onClick={onCreateFile}>
         <PlusIcon aria-hidden='true' focusable='false' />
