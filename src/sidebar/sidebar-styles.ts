@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components/macro'
 
 import { DefaultButton } from 'ui/default-button'
-
-import { ReactComponent as File } from 'ui/assets/file-text.svg'
+import { FileText } from 'ui/icons'
 
 export const Sidebar = styled.aside`${({ theme }) => css`
   background: ${({ theme }) => theme.colors.black};
@@ -128,7 +127,7 @@ type FileIconProps = {
   $isActive: boolean
 }
 
-export const FileIcon = styled(File) <FileIconProps>`${({ theme, $isActive }) => css`
+export const FileIcon = styled(FileText) <FileIconProps>`${({ theme, $isActive }) => css`
   color: ${$isActive ? theme.colors.primary : theme.colors.gray};
   opacity: ${$isActive ? 1 : 0.65};
   position: absolute;

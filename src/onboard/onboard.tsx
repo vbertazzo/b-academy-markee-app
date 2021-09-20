@@ -1,4 +1,4 @@
-import { ReactComponent as AddIcon } from 'ui/assets/plus.svg'
+import { Plus as AddIcon } from 'ui/icons'
 
 import * as S from './onboard-styles'
 

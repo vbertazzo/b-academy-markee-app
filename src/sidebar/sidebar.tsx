@@ -2,8 +2,7 @@ import { MouseEvent } from 'react'
 import { File } from 'resources/files/types'
 
 import { StatusIcon } from './status-icon'
-import { ReactComponent as PlusIcon } from 'ui/assets/plus.svg'
-import { ReactComponent as RemoveIcon } from 'ui/assets/close.svg'
+import { Close as RemoveIcon, Plus as PlusIcon } from 'ui/icons'
 import logo from './logo.png'
 
 import * as S from './sidebar-styles'

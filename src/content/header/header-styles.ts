@@ -1,7 +1,6 @@
 import styled, { css, keyframes } from 'styled-components/macro'
 import { DefaultButton } from 'ui/default-button'
-import { ReactComponent as File } from 'ui/assets/file-text.svg'
-import { ReactComponent as Copy } from 'ui/assets/copy.svg'
+import { FileText, Copy } from 'ui/icons'
 
 export const Container = styled.div`
   width: 100%;
@@ -12,7 +11,7 @@ export const Container = styled.div`
   gap: 1.2rem;
 `
 
-export const FileIcon = styled(File)`
+export const FileIcon = styled(FileText)`
   color: ${({ theme }) => theme.colors.primary};
 `
 
