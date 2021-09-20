@@ -12,11 +12,13 @@ export const Sidebar = styled.aside`${({ theme }) => css`
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
 
   @media (min-width: ${theme.breakpoints.forTabletLandscapeUp}) {
     max-width: 33.2rem;
     min-width: 33.2rem;
     padding: 3.2rem;
+    gap: 2.2rem;
   }
 `}`
 
@@ -53,46 +55,35 @@ export const Logo = styled.img`
   width: 16.4rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
-    margin-top: 1.4rem;
+    margin: 1.4rem 0;
   }
 `
 
-export const Divider = styled.div`
-  margin-bottom: 2.4rem;
-  margin-top: 2rem;
+export const H2 = styled.h2`${({ theme }) => css`
+  color: ${theme.colors.white};
+  font-size: 1.6rem;
+  position: relative;
+  padding-left: 2rem;
   width: min(32rem, 100%);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
+  span {
+    background-color: ${theme.colors.black};
+    position: relative;
+    padding: 0 1rem;
+  }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
-    margin-top: 5.6rem;
+  &::before {
+    background: ${theme.colors.primary};
+    border-radius: 2px;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 100%;
   }
-`
-
-export const LeftLine = styled.div`
-  background: ${({ theme }) => theme.colors.primary};
-  height: 2px;
-  width: 10%;
-`
-
-export const DividerText = styled.h2`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 1.6rem;
-  letter-spacing: -0.02rem;
-  line-height: 2.1rem;
-  margin: 0;
-`
-
-export const RightLine = styled.div`
-  background: ${({ theme }) => theme.colors.primary};
-  flex-grow: 1;
-  height: 2px;
-  width: 60%;
-`
+`}`
 
 export const AddButton = styled(DefaultButton)`${({ theme }) => css`
   background: ${theme.colors.primary};
