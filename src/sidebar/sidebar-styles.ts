@@ -186,6 +186,12 @@ export const ListItem = styled.li<ListItemProps>`${({ theme, isActive }) => css`
   align-items: center;
   justify-content: space-between;
 
+  &:focus-within {
+    ${RemoveButton} {
+      display: flex;
+    }
+  }
+
   &:hover {
     background: ${theme.colors.lightBlack};
 
