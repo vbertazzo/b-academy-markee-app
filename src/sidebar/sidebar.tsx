@@ -3,7 +3,7 @@ import { File } from 'resources/files/types'
 
 import { StatusIcon } from './status-icon'
 import { Close as RemoveIcon, Plus as PlusIcon } from 'ui/icons'
-import logo from './logo.png'
+import Logo from './markee-logo.svg'
 
 import * as S from './sidebar-styles'
 
@@ -27,7 +27,7 @@ export function Sidebar ({
           Markee - Markdown Editor
         </S.VisuallyHiddenH1>
         <S.LogoLink href='/'>
-          <S.Logo src={logo} alt='Markee. home' />
+          <S.Logo src={Logo} alt='Markee. home' />
         </S.LogoLink>
       </header>
 
