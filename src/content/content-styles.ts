@@ -102,15 +102,19 @@ export const Preview = styled.article`${({ theme }) => css`
     margin-top: 0;
   }
 
-  &:focus {
+  img {
+    max-width: 100%;
+  }
+
+  &:focus, a:focus {
     outline: solid 2px ${theme.colors.primaryDark};
   }
 
-  &:focus:not(:focus-visible) {
+  &:focus:not(:focus-visible), a:focus:not(:focus-visible) {
     outline: none;
   }
 
-  &:focus-visible {
+  &:focus-visible, a:focus-visible {
     outline: solid 2px ${theme.colors.primaryDark};
   }
 `}`
