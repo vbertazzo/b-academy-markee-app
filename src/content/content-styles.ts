@@ -85,6 +85,7 @@ export const PreviewWrapper = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.forTabletLandscapeUp}) {
     height: 100%;
+    max-width: 50%;
   }
 `
 
@@ -95,6 +96,7 @@ export const Preview = styled.article`${({ theme }) => css`
   height: 100%;
   line-height: 3rem;
   overflow-y: auto;
+  overflow-wrap: anywhere;
   padding: 0 0.3rem;
   width: 100%;
 
