@@ -54,7 +54,7 @@ Servir localmente com hot reload em `localhost:3000`.
 $ yarn dev
 ```
 
-build para produção e iniciar servidor
+Build para produção e iniciar servidor
 
 ```
 $ yarn build
